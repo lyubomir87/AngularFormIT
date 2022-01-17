@@ -1,0 +1,55 @@
+<body>
+  
+
+    <div class="container">
+        <h2>Молба за Отпуск</h2>
+        
+        <form  #body="ngForm"(ngSubmit)="sendMail(body)"   >
+          
+          <div class="form-group">
+            <label>Име и фамилия</label>
+            <select (change)="selectChangeHandler($event)" class="form-control">
+              <option value="{{name.employee_id}}" *ngFor="let name of names"  [ngValue]="name" >{{name.name_cyr}}</option>
+              
+            </select>
+        </div>
+        <pre></pre>
+          <div class="form-group">
+            <label>Считано От</label>
+            <input type="date" name="date" class="form-control" ngModel required #date="ngModel">
+            <p class="form-text text-muted" *ngIf="date.touched&&!date.valid">Моля въведете дата!</p>
+          </div>
+           
+          <pre></pre>
+          <div class="form-group">
+            <label>До</label>
+            <input type="date" name="date2" class="form-control" ngModel required #date2="ngModel">
+            <p class="form-text text-muted" *ngIf="date2.touched&&!date2.valid">Моля въведете дата!</p>
+          </div>
+           
+          <pre></pre>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" class="form-control" ngModel required #email="ngModel">
+            <p class="form-text text-muted" *ngIf="email.touched&&!email.valid">Моля въведете имейл адрес!</p>
+          </div>
+            
+         <pre></pre>
+          
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" rows="5" class="form-control" ngModel></textarea>
+          </div>
+           <pre></pre>
+          
+          
+            <button  class="btn-btn primary"   type="submit" [disabled]="!body.valid">Submit</button>
+          
+        </form>
+       
+     
+    </div>
+    </body>
+
+ 
+      
